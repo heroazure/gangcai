@@ -39,46 +39,56 @@
 <style scoped lang="less">
   .items {
     display: flex;
-    >.icon-text{
-      flex:1;
+    > .icon-text {
+      flex: 1;
     }
   }
-  .search-btn-div{
+
+  .search-btn-div {
     padding: 20px 30px;
   }
 </style>
 <script>
   import IconText from 'widget/IconText.vue'
+  import category from 'enum/category'
   export default{
     components: {
       [IconText.name]: IconText
     },
     data(){
       return {
-        icon1:require('../assets/img/icon1.png'),
-        icon2:require('../assets/img/icon2.png'),
-        icon3:require('../assets/img/icon3.png'),
-        icon4:require('../assets/img/icon4.png'),
-        icon5:require('../assets/img/icon5.png'),
-        icon6:require('../assets/img/icon6.png'),
-        icon7:require('../assets/img/icon7.png'),
-        icon8:require('../assets/img/icon8.png'),
-        icon9:require('../assets/img/icon9.png'),
-        icon10:require('../assets/img/icon10.png'),
-        icon11:require('../assets/img/icon11.png'),
-        icon12:require('../assets/img/icon12.png'),
-        price1:require('../assets/img/price1.png'),
-        price2:require('../assets/img/price2.png'),
-        price3:require('../assets/img/price3.png'),
-        price4:require('../assets/img/price4.png'),
+        icon1: require('../assets/img/icon1.png'),
+        icon2: require('../assets/img/icon2.png'),
+        icon3: require('../assets/img/icon3.png'),
+        icon4: require('../assets/img/icon4.png'),
+        icon5: require('../assets/img/icon5.png'),
+        icon6: require('../assets/img/icon6.png'),
+        icon7: require('../assets/img/icon7.png'),
+        icon8: require('../assets/img/icon8.png'),
+        icon9: require('../assets/img/icon9.png'),
+        icon10: require('../assets/img/icon10.png'),
+        icon11: require('../assets/img/icon11.png'),
+        icon12: require('../assets/img/icon12.png'),
+        price1: require('../assets/img/price1.png'),
+        price2: require('../assets/img/price2.png'),
+        price3: require('../assets/img/price3.png'),
+        price4: require('../assets/img/price4.png'),
 
-        //查询类别
-        category:'化学成分',
         //牌号
-        paihao:''
+        paihao: ''
       }
     },
-    methods:{
+    computed: {
+      //查询类别
+      category(){
+        let result = ''
+        category.forEach(item => {
+          if (item.id === this.$store.state.categoryId) result = item.name
+        })
+        return result
+      }
+    },
+    methods: {
       onSearch(){
 
       }
