@@ -32,7 +32,7 @@
       <mt-field label="牌号" placeholder="请输入牌号" v-model="paihao"></mt-field>
     </div>
     <div class="search-btn-div">
-      <mt-button type="primary" size="large">查询</mt-button>
+      <mt-button type="primary" size="large" @click="onSearch">查询</mt-button>
     </div>
   </div>
 </template>
@@ -49,7 +49,6 @@
 </style>
 <script>
   import IconText from 'widget/IconText.vue'
-  //import icon1 from '../assets/img/icon5.png'
   export default{
     components: {
       [IconText.name]: IconText
@@ -77,6 +76,11 @@
         category:'化学成分',
         //牌号
         paihao:''
+      }
+    },
+    methods:{
+      onSearch(){
+
       }
     }
   }
