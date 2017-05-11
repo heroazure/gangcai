@@ -1,4 +1,4 @@
-# gangcai2
+# gangcai
 
 > A Vue.js project
 
@@ -7,6 +7,7 @@
 ``` bash
 # install dependencies
 npm install
+或者yarn
 
 # serve with hot reload at localhost:8080
 npm run dev
