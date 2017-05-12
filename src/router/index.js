@@ -70,7 +70,7 @@ let routes=[
 const router= new Router({
   routes,
   linkActiveClass: 'active',
-  mode:'history'
+  mode:'hash'
 })
 
 router.beforeEach((to, from, next) => {
