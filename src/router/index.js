@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import util from '@/util/myUtil'
+// import util from '@/util/myUtil'
 import {Indicator } from 'mint-ui'
 
 //首页组件定义
@@ -70,12 +70,12 @@ let routes=[
 const router= new Router({
   routes,
   linkActiveClass: 'active',
-  mode:'history'
+  mode:'hash'
 })
 
 router.beforeEach((to, from, next) => {
   Indicator.open({spinnerType: 'fading-circle'})
-  util.setTitle(to.meta.title)
+  document.title=to.meta.title
   setTimeout(()=>next(),500)
 })
 

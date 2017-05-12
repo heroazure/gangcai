@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"><title>钢材主页</title><script>//适合移动端web设计自动调整html font-size
+      (function (doc, win) {
+        var docEl = doc.documentElement,
+          resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+          recalc = function () {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth) return;
+            if(clientWidth>640){
+              docEl.style.fontSize='24px'
+            }else{
+              docEl.style.fontSize = 14 * (clientWidth / 320) + 'px';//假设这里就是以iphone 5s为例
+            }
+          };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+      })(document, window);</script><link href=/gangcai/static/css/app.63adf9085353ef18ddeba0f2df9af2de.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/gangcai/static/js/manifest.92cd8468ba5edb681c40.js></script><script type=text/javascript src=/gangcai/static/js/vendor.2c851cdd8f6e68f29f24.js></script><script type=text/javascript src=/gangcai/static/js/app.0ef8e8f7bc98d06f1df1.js></script></body></html>
