@@ -15,6 +15,20 @@ let Juanban=(resolve) => require(['@/components/price/Juanban'], resolve)
 //查询类别
 let Category=(resolve) => require(['@/components/category/Index'], resolve)
 
+//重量计算
+let Gangban=(resolve) => require(['@/components/weight/Gangban'], resolve)
+let Yuangang=(resolve) => require(['@/components/weight/Yuangang'], resolve)
+let Fanggang=(resolve) => require(['@/components/weight/Fanggang'], resolve)
+let Liujiaogang=(resolve) => require(['@/components/weight/Liujiaogang'], resolve)
+let Bajiaogang=(resolve) => require(['@/components/weight/Bajiaogang'], resolve)
+let Biangang=(resolve) => require(['@/components/weight/Biangang'], resolve)
+let Dengbianjiaogang=(resolve) => require(['@/components/weight/Dengbianjiaogang'], resolve)
+let Budengbianjiaogang=(resolve) => require(['@/components/weight/Budengbianjiaogang'], resolve)
+let Wufengguan=(resolve) => require(['@/components/weight/Wufengguan'], resolve)
+let Caogang=(resolve) => require(['@/components/weight/Caogang'], resolve)
+let Gongzigang=(resolve) => require(['@/components/weight/Gongzigang'], resolve)
+let Fangguan=(resolve) => require(['@/components/weight/Fangguan'], resolve)
+
 Vue.use(Router)
 let routes=[
   {
@@ -64,6 +78,102 @@ let routes=[
       title:'查询类别'
     },
     component: Category
+  },
+  {
+    path: '/weight/1',
+    name: 'Gangban',
+    meta:{
+      title:'钢板重量计算'
+    },
+    component: Gangban
+  },
+  {
+    path: '/weight/2',
+    name: 'Yuangang',
+    meta:{
+      title:'圆钢重量计算'
+    },
+    component: Yuangang
+  },
+  {
+    path: '/weight/3',
+    name: 'Fanggang',
+    meta:{
+      title:'方钢重量计算'
+    },
+    component: Fanggang
+  },
+  {
+    path: '/weight/4',
+    name: 'Liujiaogang',
+    meta:{
+      title:'六角钢重量计算'
+    },
+    component: Liujiaogang
+  },
+  {
+    path: '/weight/5',
+    name: 'Bajiaogang',
+    meta:{
+      title:'八角钢重量计算'
+    },
+    component: Bajiaogang
+  },
+  {
+    path: '/weight/6',
+    name: 'Biangang',
+    meta:{
+      title:'扁钢重量计算'
+    },
+    component: Biangang
+  },
+  {
+    path: '/weight/7',
+    name: 'Dengbianjiaogang',
+    meta:{
+      title:'等边角钢重量计算'
+    },
+    component: Dengbianjiaogang
+  },
+  {
+    path: '/weight/8',
+    name: 'Budengbianjiaogang',
+    meta:{
+      title:'不等边角钢重量计算'
+    },
+    component: Budengbianjiaogang
+  },
+  {
+    path: '/weight/9',
+    name: 'Wufengguan',
+    meta:{
+      title:'无缝管/焊管重量计算'
+    },
+    component: Wufengguan
+  },
+  {
+    path: '/weight/10',
+    name: 'Caogang',
+    meta:{
+      title:'槽钢重量计算'
+    },
+    component: Caogang
+  },
+  {
+    path: '/weight/11',
+    name: 'Gongzigang',
+    meta:{
+      title:'工字钢重量计算'
+    },
+    component: Gongzigang
+  },
+  {
+    path: '/weight/12',
+    name: 'Fangguan',
+    meta:{
+      title:'方管/矩形管重量计算'
+    },
+    component: Fangguan
   }
 ]
 

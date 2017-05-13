@@ -2,22 +2,22 @@
   <div class="hlj-container-wrap">
     <mt-cell title="重量计算"></mt-cell>
     <div class="items">
-      <icon-text text="钢板" :iconUrl="icon1"></icon-text>
-      <icon-text text="圆钢" :iconUrl="icon2"></icon-text>
-      <icon-text text="方钢" :iconUrl="icon3"></icon-text>
-      <icon-text text="六角钢" :iconUrl="icon4"></icon-text>
+      <icon-text text="钢板" :iconUrl="icon1" path="/weight/1"></icon-text>
+      <icon-text text="圆钢" :iconUrl="icon2" path="/weight/2"></icon-text>
+      <icon-text text="方钢" :iconUrl="icon3" path="/weight/3"></icon-text>
+      <icon-text text="六角钢" :iconUrl="icon4" path="/weight/4"></icon-text>
     </div>
     <div class="items">
-      <icon-text text="八角钢" :iconUrl="icon5"></icon-text>
-      <icon-text text="扁钢" :iconUrl="icon6"></icon-text>
-      <icon-text text="等边角钢" :iconUrl="icon7"></icon-text>
-      <icon-text text="不等边角钢" :iconUrl="icon8"></icon-text>
+      <icon-text text="八角钢" :iconUrl="icon5" path="/weight/5"></icon-text>
+      <icon-text text="扁钢" :iconUrl="icon6" path="/weight/6"></icon-text>
+      <icon-text text="等边角钢" :iconUrl="icon7" path="/weight/7"></icon-text>
+      <icon-text text="不等边角钢" :iconUrl="icon8" path="/weight/8"></icon-text>
     </div>
     <div class="items">
-      <icon-text text="无缝管/焊管" :iconUrl="icon9"></icon-text>
-      <icon-text text="槽钢" :iconUrl="icon10"></icon-text>
-      <icon-text text="工字钢" :iconUrl="icon11"></icon-text>
-      <icon-text text="方管/矩形管" :iconUrl="icon12"></icon-text>
+      <icon-text text="无缝管/焊管" :iconUrl="icon9" path="/weight/9"></icon-text>
+      <icon-text text="槽钢" :iconUrl="icon10" path="/weight/10"></icon-text>
+      <icon-text text="工字钢" :iconUrl="icon11" path="/weight/11"></icon-text>
+      <icon-text text="方管/矩形管" :iconUrl="icon12" path="/weight/12"></icon-text>
     </div>
     <mt-cell title="价格计算"></mt-cell>
     <div class="items">
@@ -51,6 +51,8 @@
 <script>
   import IconText from 'widget/IconText.vue'
   import category from 'enum/category'
+  import constituent from 'ajax/constituent'
+  import { Toast } from 'mint-ui'
   export default{
     components: {
       [IconText.name]: IconText
@@ -90,7 +92,12 @@
     },
     methods: {
       onSearch(){
+          if(!this.paihao.trim()){
+            Toast({message: '请输入牌号'})
+          }
+          if(this.$store.state.categoryId===1){
 
+          }
       }
     }
   }
