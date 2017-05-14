@@ -29,7 +29,7 @@
     <mt-cell title="相关查询"></mt-cell>
     <div class="search-result clearfix" v-if="searchVals.length">
       <div class="search-item" v-for="item in searchVals" :key="item.id">
-        <router-link class="origin-a" :to="{path:`/detail/constituent/${item.id}`}">{{item.id}}</router-link>
+        <router-link class="origin-a" :to="{path:`/detail/index/${item.id}/${categoryId}`}">{{item.id}}</router-link>
       </div>
     </div>
     <div class="search-result" v-else>
@@ -38,7 +38,8 @@
     <div class="search-bottom">
       <div class="form-pleft">
         <mt-cell title="查询类别" to="/category" :value="category" is-link></mt-cell>
-        <mt-field label="牌号" placeholder="请输入牌号" v-model="paihao"></mt-field>
+        <mt-field label="牌号" placeholder="请输入牌号" v-model="paihao" v-if="categoryId!==3"></mt-field>
+        <mt-field label="公称尺寸" placeholder="请输入公称尺寸" v-model="chicun" v-else></mt-field>
       </div>
       <div class="search-btn-div">
         <mt-button type="primary" size="large" @click="onSearch">查询</mt-button>
@@ -63,7 +64,7 @@
 
   .search-result {
     padding: 5px @hlj-gutter-width;
-    font-size:12px;
+    font-size: 12px;
   }
 
   .search-item {
@@ -97,6 +98,8 @@
   import IconText from 'widget/IconText.vue'
   import category from 'enum/category'
   import constituent from 'ajax/constituent'
+  import capability from 'ajax/capability'
+  import compare from 'ajax/compare'
   import {Toast} from 'mint-ui'
   export default{
     components: {
@@ -123,37 +126,62 @@
 
         //牌号
         paihao: '',
+        //公称尺寸
+        chicun:'',
 
         //模糊搜索结果
         searchVals: []
       }
     },
     computed: {
+      categoryId(){
+        return this.$store.state.categoryId
+      },
       //查询类别
       category(){
         let result = ''
         category.forEach(item => {
-          if (item.id === this.$store.state.categoryId) result = item.name
+          if (item.id === this.categoryId) result = item.name
         })
         return result
       }
     },
     methods: {
       onSearch(){
-        let paihao = this.paihao.trim()
-        if (!paihao) {
-          Toast({message: '请输入牌号'})
-          return
-        }
-        if (this.$store.state.categoryId === 1) {
+        if(this.categoryId===3){
+            if(!this.chicun.trim()){
+              Toast({message:'请输入公称尺寸'})
+              return
+            }
+            this.$router.push(`/detail/list/${this.chicun.trim()}`)
+        }else {
+          let paihao = this.paihao.trim()
+          if (!paihao) {
+            Toast({message: '请输入牌号'})
+            return
+          }
+          let ary = []
+          switch (this.categoryId + '') {
+            case '0':
+              ary = compare
+              break
+            case '1':
+              ary = constituent
+              break
+            case '2':
+              ary = capability
+              break
+            default:
+              break
+          }
           let arry = []
-          constituent.forEach(item => {
+          ary.forEach(item => {
             if (item.paihao.toLowerCase().indexOf(paihao.toLowerCase()) !== -1) {
               arry.push({id: item.paihao})
             }
           })
           this.searchVals = arry
-          window.scrollTo(0,document.body.scrollHeight)
+          window.scrollTo(0, document.body.scrollHeight)
         }
       }
     }

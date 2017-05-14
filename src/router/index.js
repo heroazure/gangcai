@@ -30,9 +30,11 @@ let Gongzigang=(resolve) => require(['@/components/weight/Gongzigang'], resolve)
 let Fangguan=(resolve) => require(['@/components/weight/Fangguan'], resolve)
 
 //查询详情
-let Constituent=(resolve) => require(['@/components/detail/Constituent'], resolve)
+let Detail=(resolve) => require(['@/components/detail/Index'], resolve)
+let Chicun=(resolve) => require(['@/components/detail/List'], resolve)
 
 Vue.use(Router)
+
 let routes=[
   {
     path: '/',
@@ -179,12 +181,20 @@ let routes=[
     component: Fangguan
   },
   {
-    path: '/detail/constituent/:id',
-    name: 'Constituent',
+    path: '/detail/index/:id/:type',
+    name: 'detail',
     meta:{
-      title:'化学成分'
+      title:'详情'
     },
-    component: Constituent
+    component: Detail
+  },
+  {
+    path: '/detail/list/:chicun',
+    name: 'chicun',
+    meta:{
+      title:'冷热轧钢'
+    },
+    component: Chicun
   }
 ]
 
