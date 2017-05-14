@@ -68,6 +68,9 @@
 //----------------------------------
 
 //--------------------重写一下mint-ui的样式
+.mint-cell-title{
+  color: #333;
+}
 .mint-datetime-action {
   color: @hlj-global-primary-color !important;
 }
@@ -88,4 +91,15 @@
 
 .form-pleft{
   padding-left: 10px;
+}
+
+.origin-a{
+  color: @hlj-link-color;
+  &:link{
+    color: @hlj-link-color;
+  }
+  &:hover,&:visited,&:focus{
+    color: @hlj-disabled-color;
+    text-decoration: underline;
+  }
 }

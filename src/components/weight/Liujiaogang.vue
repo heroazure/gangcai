@@ -2,6 +2,7 @@
   <div class="hlj-container-wrap">
     <mt-cell title="六角钢"></mt-cell>
     <div class="form-pleft">
+      <mt-cell title="材质" value="201"></mt-cell>
       <mt-field label="对边距离A(mm)" placeholder="请输入对边距离" v-model="betweenLength"></mt-field>
       <mt-field label="长度L(m)" placeholder="请输入长度" v-model="length"></mt-field>
     </div>

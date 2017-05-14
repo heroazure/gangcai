@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import util from '@/util/myUtil'
+import util from '@/util/myUtil'
 import {Indicator } from 'mint-ui'
 
 //首页组件定义
@@ -28,6 +28,9 @@ let Wufengguan=(resolve) => require(['@/components/weight/Wufengguan'], resolve)
 let Caogang=(resolve) => require(['@/components/weight/Caogang'], resolve)
 let Gongzigang=(resolve) => require(['@/components/weight/Gongzigang'], resolve)
 let Fangguan=(resolve) => require(['@/components/weight/Fangguan'], resolve)
+
+//查询详情
+let Constituent=(resolve) => require(['@/components/detail/Constituent'], resolve)
 
 Vue.use(Router)
 let routes=[
@@ -174,6 +177,14 @@ let routes=[
       title:'方管/矩形管重量计算'
     },
     component: Fangguan
+  },
+  {
+    path: '/detail/constituent/:id',
+    name: 'Constituent',
+    meta:{
+      title:'化学成分'
+    },
+    component: Constituent
   }
 ]
 
@@ -185,12 +196,12 @@ const router= new Router({
 
 router.beforeEach((to, from, next) => {
   Indicator.open({spinnerType: 'fading-circle'})
-  document.title=to.meta.title
-  setTimeout(()=>next(),500)
+  util.setTitle(to.meta.title)
+  next()
 })
 
 router.afterEach((to, from, next) => {
-  Indicator.close()
+  setTimeout(()=>Indicator.close(),300)
   window.scrollTo(0, 0)
 })
 

@@ -2,6 +2,7 @@
   <div class="hlj-container-wrap">
     <mt-cell title="无缝管/焊管"></mt-cell>
     <div class="form-pleft">
+      <mt-cell title="材质" value="317"></mt-cell>
       <mt-field label="外径(mm)" placeholder="请输入外径" v-model="externalDiameter "></mt-field>
       <mt-field label="壁厚D(mm)" placeholder="请输入壁厚" v-model="thickness"></mt-field>
       <mt-field label="长度L(m)" placeholder="请输入长度" v-model="length"></mt-field>

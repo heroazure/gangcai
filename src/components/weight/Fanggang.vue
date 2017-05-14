@@ -2,6 +2,7 @@
   <div class="hlj-container-wrap">
     <mt-cell title="方钢"></mt-cell>
     <div class="form-pleft">
+      <mt-cell title="材质" value="321"></mt-cell>
       <mt-field label="边长A(mm)" placeholder="请输入边长" v-model="sideLength"></mt-field>
       <mt-field label="长度L(m)" placeholder="请输入长度" v-model="length"></mt-field>
     </div>

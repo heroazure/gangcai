@@ -2,6 +2,7 @@
   <div class="hlj-container-wrap">
     <mt-cell title="钢板"></mt-cell>
     <div class="form-pleft">
+      <mt-cell title="材质" value="304"></mt-cell>
       <mt-field label="宽度W(mm)" placeholder="请输入宽度" v-model="width"></mt-field>
       <mt-field label="厚度H(mm)" placeholder="请输入厚度" v-model="thickness"></mt-field>
       <mt-field label="长度L(m)" placeholder="请输入长度" v-model="length"></mt-field>

@@ -5,7 +5,7 @@ module.exports = {
     // to edit target browsers: use "browserlist" field in package.json
     "autoprefixer": {
       "browsers": [
-        "> 1%",
+        "> 0.1%",
         "last 2 versions",
         "not ie <= 8"
       ]

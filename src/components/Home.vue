@@ -27,16 +27,29 @@
       <icon-text text="卷板计价" :iconUrl="price4" path="/price/juanban"></icon-text>
     </div>
     <mt-cell title="相关查询"></mt-cell>
-    <div class="form-pleft">
-      <mt-cell title="查询类别" to="/category" :value="category" is-link></mt-cell>
-      <mt-field label="牌号" placeholder="请输入牌号" v-model="paihao"></mt-field>
+    <div class="search-result clearfix" v-if="searchVals.length">
+      <div class="search-item" v-for="item in searchVals" :key="item.id">
+        <router-link class="origin-a" :to="{path:`/detail/constituent/${item.id}`}">{{item.id}}</router-link>
+      </div>
     </div>
-    <div class="search-btn-div">
-      <mt-button type="primary" size="large" @click="onSearch">查询</mt-button>
+    <div class="search-result" v-else>
+      没有查询结果
+    </div>
+    <div class="search-bottom">
+      <div class="form-pleft">
+        <mt-cell title="查询类别" to="/category" :value="category" is-link></mt-cell>
+        <mt-field label="牌号" placeholder="请输入牌号" v-model="paihao"></mt-field>
+      </div>
+      <div class="search-btn-div">
+        <mt-button type="primary" size="large" @click="onSearch">查询</mt-button>
+      </div>
     </div>
   </div>
 </template>
 <style scoped lang="less">
+  @import "../assets/base/fn";
+
+  @bottom-padding: 170px;
   .items {
     display: flex;
     > .icon-text {
@@ -45,14 +58,45 @@
   }
 
   .search-btn-div {
-    padding: 20px 30px;
+    padding: 20px 10px;
+  }
+
+  .search-result {
+    padding: 0 @hlj-gutter-width;
+  }
+
+  .search-item {
+    float: left;
+    .ellipsis(50%);
+    padding-top: 5px;
+    &:not(:last-child) {
+      padding-right: 5px;
+    }
+  }
+
+  .hlj-container-wrap {
+    padding-bottom: @bottom-padding; /*no*/
+  }
+
+  .search-bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    height: @bottom-padding; /*no*/
+    z-index: 100;
+    background-color: #fff;
+    @media (min-width: @hlj-page-max-width) {
+      width: @hlj-page-max-width; /*no*/
+    }
   }
 </style>
 <script>
   import IconText from 'widget/IconText.vue'
   import category from 'enum/category'
   import constituent from 'ajax/constituent'
-  import { Toast } from 'mint-ui'
+  import {Toast} from 'mint-ui'
   export default{
     components: {
       [IconText.name]: IconText
@@ -77,7 +121,10 @@
         price4: require('../assets/img/price4.png'),
 
         //牌号
-        paihao: ''
+        paihao: '',
+
+        //模糊搜索结果
+        searchVals: []
       }
     },
     computed: {
@@ -92,12 +139,21 @@
     },
     methods: {
       onSearch(){
-          if(!this.paihao.trim()){
-            Toast({message: '请输入牌号'})
-          }
-          if(this.$store.state.categoryId===1){
-
-          }
+        let paihao = this.paihao.trim()
+        if (!paihao) {
+          Toast({message: '请输入牌号'})
+          return
+        }
+        if (this.$store.state.categoryId === 1) {
+          let arry = []
+          constituent.forEach(item => {
+            if (item.paihao.toLowerCase().indexOf(paihao.toLowerCase()) !== -1) {
+              arry.push({id: item.paihao})
+            }
+          })
+          this.searchVals = arry
+          window.scrollTo(0,document.body.scrollHeight)
+        }
       }
     }
   }

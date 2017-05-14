@@ -2,6 +2,7 @@
   <div class="hlj-container-wrap">
     <mt-cell title="圆钢"></mt-cell>
     <div class="form-pleft">
+      <mt-cell title="材质" value="304L"></mt-cell>
       <mt-field label="直径A(mm)" placeholder="请输入直径" v-model="diameter"></mt-field>
       <mt-field label="长度L(m)" placeholder="请输入长度" v-model="length"></mt-field>
     </div>

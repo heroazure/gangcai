@@ -2,6 +2,7 @@
   <div class="hlj-container-wrap">
     <mt-cell title="等边角钢"></mt-cell>
     <div class="form-pleft">
+      <mt-cell title="材质" value="316"></mt-cell>
       <mt-field label="边长A(mm)" placeholder="请输入边长" v-model="sideLength"></mt-field>
       <mt-field label="厚度D(mm)" placeholder="请输入厚度" v-model="thickness"></mt-field>
       <mt-field label="长度L(m)" placeholder="请输入长度" v-model="length"></mt-field>

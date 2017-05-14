@@ -1,7 +1,9 @@
 <template>
   <div id="app" class="hlj-container-stretch app">
-    <transition name="page">
-      <router-view></router-view>
+    <transition>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </transition>
   </div>
 </template>

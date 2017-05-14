@@ -26,6 +26,7 @@ module.exports = {
       'widget':resolve('src/components/widget'),
       'enum':resolve('src/enum'),
       'ajax':resolve('src/ajax'),
+      'assets':resolve('src/assets'),
     }
   },
   module: {

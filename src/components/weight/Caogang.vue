@@ -2,6 +2,7 @@
   <div class="hlj-container-wrap">
     <mt-cell title="槽钢"></mt-cell>
     <div class="form-pleft">
+      <mt-cell title="材质" value="309"></mt-cell>
       <mt-field label="高度H(mm)" placeholder="请输入高度" v-model="height"></mt-field>
       <mt-field label="腰厚D(mm)" placeholder="请输入腰厚" v-model="thickness"></mt-field>
       <mt-field label="腿宽B(mm)" placeholder="请输入腿宽" v-model="width"></mt-field>
