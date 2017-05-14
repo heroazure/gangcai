@@ -62,7 +62,7 @@
   }
 
   .search-result {
-    padding: 0 @hlj-gutter-width;
+    padding: 5px @hlj-gutter-width;
     font-size:12px;
   }
 
