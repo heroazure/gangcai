@@ -2,11 +2,11 @@
   <div class="hlj-container-wrap">
     <mt-cell title="方管/矩形管"></mt-cell>
     <div class="form-pleft">
-      <mt-cell title="材质" value="410"></mt-cell>
-      <mt-field label="长边长A(mm)" placeholder="请输入长边长" v-model="sideLength1"></mt-field>
+      <mt-cell title="材质" to="/material" :value="material" is-link></mt-cell>
       <mt-field label="厚度D(mm)" placeholder="请输入厚度" v-model="thickness"></mt-field>
+      <mt-field label="长边长A(mm)" placeholder="请输入长边长" v-model="sideLength1"></mt-field>
       <mt-field label="短边长B(mm)" placeholder="请输入短边长" v-model="sideLength2"></mt-field>
-      <mt-field label="长度L(m)" placeholder="请输入长度" v-model="length"></mt-field>
+      <mt-field label="长度L(mm)" placeholder="请输入长度" v-model="length"></mt-field>
     </div>
     <mt-cell title="计算结果"></mt-cell>
     <div class="form-pleft">
@@ -18,6 +18,7 @@
 
 </style>
 <script>
+  import material from 'enum/material'
   export default{
     data(){
       return {
@@ -28,12 +29,15 @@
       }
     },
     computed: {
+      material(){
+        return this.$store.state.material
+      },
       result(){
-        if (!this.sideLength1 || !this.thickness||!this.sideLength2|| !this.length) {
+        if (!this.sideLength1 || !this.thickness||!this.sideLength2|| !this.length||!this.material) {
           return ''
         }
         try {
-          return this.thickness*((this.sideLength1+this.sideLength2)*2-this.thickness*4) * this.length
+          return this.thickness*((this.sideLength1+this.sideLength2)*2-this.thickness*4) * (this.length/1000)*material[this.material]
         } catch (e) {
           return ''
         }

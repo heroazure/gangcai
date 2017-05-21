@@ -6,11 +6,15 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
-    categoryId:1
+    categoryId:1,
+    material:''
   },
   mutations: {
     changeCategory (state,id) {
       state.categoryId=id
+    },
+    changeMaterial (state,id) {
+      state.material=id
     }
   }
 })

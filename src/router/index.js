@@ -15,6 +15,9 @@ let Juanban=(resolve) => require(['@/components/price/Juanban'], resolve)
 //查询类别
 let Category=(resolve) => require(['@/components/category/Index'], resolve)
 
+//材质
+let Material=(resolve) => require(['@/components/material/Index'], resolve)
+
 //重量计算
 let Gangban=(resolve) => require(['@/components/weight/Gangban'], resolve)
 let Yuangang=(resolve) => require(['@/components/weight/Yuangang'], resolve)
@@ -32,6 +35,10 @@ let Fangguan=(resolve) => require(['@/components/weight/Fangguan'], resolve)
 //查询详情
 let Detail=(resolve) => require(['@/components/detail/Index'], resolve)
 let Chicun=(resolve) => require(['@/components/detail/List'], resolve)
+
+//冷热轧钢
+let Cold=(resolve) => require(['@/components/zhagang/Cold'], resolve)
+let Hot=(resolve) => require(['@/components/zhagang/Hot'], resolve)
 
 Vue.use(Router)
 
@@ -195,6 +202,30 @@ let routes=[
       title:'冷热轧钢'
     },
     component: Chicun
+  },
+  {
+    path: '/material',
+    name: 'material',
+    meta:{
+      title:'材质'
+    },
+    component: Material
+  },
+  {
+    path: '/zhagang/cold',
+    name: 'cold',
+    meta:{
+      title:'冷轧钢'
+    },
+    component: Cold
+  },
+  {
+    path: '/zhagang/hot',
+    name: 'hot',
+    meta:{
+      title:'热轧钢'
+    },
+    component: Hot
   }
 ]
 

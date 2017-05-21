@@ -11,12 +11,20 @@
   export default{
     data(){
       return {
-        category:category
+        category: category
       }
     },
     methods: {
       onTap(id){
-          this.$store.commit('changeCategory',id)
+        if (id === 3) {
+          this.$router.push('/zhagang/cold')
+          return
+        }
+        if (id === 4) {
+          this.$router.push('/zhagang/hot')
+          return
+        }
+        this.$store.commit('changeCategory', id)
         this.$router.back()
       }
     }

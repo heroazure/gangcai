@@ -2,29 +2,29 @@
   <div class="hlj-container-wrap">
     <mt-cell title="重量计算"></mt-cell>
     <div class="items">
-      <icon-text text="钢板" :iconUrl="icon1" path="/weight/1"></icon-text>
-      <icon-text text="圆钢" :iconUrl="icon2" path="/weight/2"></icon-text>
-      <icon-text text="方钢" :iconUrl="icon3" path="/weight/3"></icon-text>
-      <icon-text text="六角钢" :iconUrl="icon4" path="/weight/4"></icon-text>
+      <icon-text text="钢板" :iconUrl="icon1" path="/weight/1" @click.native="onWeightTap"></icon-text>
+      <icon-text text="圆钢" :iconUrl="icon2" path="/weight/2" @click.native="onWeightTap"></icon-text>
+      <icon-text text="方钢" :iconUrl="icon3" path="/weight/3" @click.native="onWeightTap"></icon-text>
+      <icon-text text="六角钢" :iconUrl="icon4" path="/weight/4" @click.native="onWeightTap"></icon-text>
     </div>
     <div class="items">
-      <icon-text text="八角钢" :iconUrl="icon5" path="/weight/5"></icon-text>
-      <icon-text text="扁钢" :iconUrl="icon6" path="/weight/6"></icon-text>
-      <icon-text text="等边角钢" :iconUrl="icon7" path="/weight/7"></icon-text>
-      <icon-text text="不等边角钢" :iconUrl="icon8" path="/weight/8"></icon-text>
+      <icon-text text="八角钢" :iconUrl="icon5" path="/weight/5" @click.native="onWeightTap"></icon-text>
+      <icon-text text="扁钢" :iconUrl="icon6" path="/weight/6" @click.native="onWeightTap"></icon-text>
+      <icon-text text="等边角钢" :iconUrl="icon7" path="/weight/7" @click.native="onWeightTap"></icon-text>
+      <icon-text text="不等边角钢" :iconUrl="icon8" path="/weight/8" @click.native="onWeightTap"></icon-text>
     </div>
     <div class="items">
-      <icon-text text="无缝管/焊管" :iconUrl="icon9" path="/weight/9"></icon-text>
-      <icon-text text="槽钢" :iconUrl="icon10" path="/weight/10"></icon-text>
-      <icon-text text="工字钢" :iconUrl="icon11" path="/weight/11"></icon-text>
-      <icon-text text="方管/矩形管" :iconUrl="icon12" path="/weight/12"></icon-text>
+      <icon-text text="无缝管/焊管" :iconUrl="icon9" path="/weight/9" @click.native="onWeightTap"></icon-text>
+      <icon-text text="槽钢" :iconUrl="icon10" path="/weight/10" @click.native="onWeightTap"></icon-text>
+      <icon-text text="工字钢" :iconUrl="icon11" path="/weight/11" @click.native="onWeightTap"></icon-text>
+      <icon-text text="方管/矩形管" :iconUrl="icon12" path="/weight/12" @click.native="onWeightTap"></icon-text>
     </div>
     <mt-cell title="价格计算"></mt-cell>
     <div class="items">
-      <icon-text text="平板单价" :iconUrl="price1" path="/price/unit"></icon-text>
-      <icon-text text="平板理算计价" :iconUrl="price2" path="/price/lisuan"></icon-text>
-      <icon-text text="平板过磅计价" :iconUrl="price3" path="/price/weigh"></icon-text>
-      <icon-text text="卷板计价" :iconUrl="price4" path="/price/juanban"></icon-text>
+      <icon-text text="平板单价" :iconUrl="price1" path="/price/unit" @click.native="onWeightTap"></icon-text>
+      <icon-text text="平板理算计价" :iconUrl="price2" path="/price/lisuan" @click.native="onWeightTap"></icon-text>
+      <icon-text text="平板过磅计价" :iconUrl="price3" path="/price/weigh" @click.native="onWeightTap"></icon-text>
+      <icon-text text="卷板计价" :iconUrl="price4" path="/price/juanban" @click.native="onWeightTap"></icon-text>
     </div>
     <mt-cell title="相关查询"></mt-cell>
     <div class="search-result clearfix" v-if="searchVals.length">
@@ -38,8 +38,8 @@
     <div class="search-bottom">
       <div class="form-pleft">
         <mt-cell title="查询类别" to="/category" :value="category" is-link></mt-cell>
-        <mt-field label="牌号" placeholder="请输入牌号" v-model="paihao" v-if="categoryId!==3"></mt-field>
-        <mt-field label="公称尺寸" placeholder="请输入公称尺寸" v-model="chicun" v-else></mt-field>
+        <mt-field label="牌号" placeholder="请输入牌号" v-model="paihao"></mt-field>
+        <!--<mt-field label="公称尺寸" placeholder="请输入公称尺寸" v-model="chicun" v-else></mt-field>-->
       </div>
       <div class="search-btn-div">
         <mt-button type="primary" size="large" @click="onSearch">查询</mt-button>
@@ -127,7 +127,7 @@
         //牌号
         paihao: '',
         //公称尺寸
-        chicun:'',
+        //chicun:'',
 
         //模糊搜索结果
         searchVals: []
@@ -147,14 +147,17 @@
       }
     },
     methods: {
+      onWeightTap(){
+        this.$store.commit('changeMaterial','')
+      },
       onSearch(){
-        if(this.categoryId===3){
+        /*if(this.categoryId===3){
             if(!this.chicun.trim()){
               Toast({message:'请输入公称尺寸'})
               return
             }
             this.$router.push(`/detail/list/${this.chicun.trim()}`)
-        }else {
+        }else {*/
           let paihao = this.paihao.trim()
           if (!paihao) {
             Toast({message: '请输入牌号'})
@@ -183,7 +186,7 @@
           this.searchVals = arry
           window.scrollTo(0, document.body.scrollHeight)
         }
-      }
+//      }
     }
   }
 </script>

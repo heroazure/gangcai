@@ -2,9 +2,9 @@
   <div class="hlj-container-wrap">
     <mt-cell title="圆钢"></mt-cell>
     <div class="form-pleft">
-      <mt-cell title="材质" value="304L"></mt-cell>
+      <mt-cell title="材质" to="/material" :value="material" is-link></mt-cell>
       <mt-field label="直径A(mm)" placeholder="请输入直径" v-model="diameter"></mt-field>
-      <mt-field label="长度L(m)" placeholder="请输入长度" v-model="length"></mt-field>
+      <mt-field label="长度L(mm)" placeholder="请输入长度" v-model="length"></mt-field>
     </div>
     <mt-cell title="计算结果"></mt-cell>
     <div class="form-pleft">
@@ -16,6 +16,7 @@
 
 </style>
 <script>
+  import material from 'enum/material'
   export default{
     data(){
       return {
@@ -24,12 +25,15 @@
       }
     },
     computed: {
+      material(){
+        return this.$store.state.material
+      },
       result(){
-        if (!this.diameter || !this.length) {
+        if (!this.diameter || !this.length||!this.material) {
           return ''
         }
         try {
-          return 0.00078535031*this.diameter*this.diameter * this.length
+          return 0.00078535031*this.diameter*this.diameter * (this.length/1000)*material[this.material]
         } catch (e) {
           return ''
         }
