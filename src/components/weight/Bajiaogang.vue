@@ -33,7 +33,7 @@
           return ''
         }
         try {
-          return 0.00828025477*this.betweenLength*this.betweenLength * (this.length/1000)*material[this.material]
+          return (0.00828025477*this.betweenLength*this.betweenLength * (this.length/1000)*material[this.material]).toFixed(6)
         } catch (e) {
           return ''
         }

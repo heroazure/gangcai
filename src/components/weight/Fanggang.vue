@@ -33,7 +33,7 @@
           return ''
         }
         try {
-          return this.sideLength*this.sideLength * (this.length/1000)*material[this.material]
+          return (this.sideLength*this.sideLength * (this.length/1000)*material[this.material]).toFixed(6)
         } catch (e) {
           return ''
         }

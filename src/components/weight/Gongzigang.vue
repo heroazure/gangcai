@@ -37,7 +37,7 @@
           return ''
         }
         try {
-          return this.height*this.width*this.thickness * (this.length/1000)*material[this.material]
+          return (this.height*this.width*this.thickness * (this.length/1000)*material[this.material]).toFixed(6)
         } catch (e) {
           return ''
         }

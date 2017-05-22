@@ -3,9 +3,9 @@
     <mt-cell title="槽钢"></mt-cell>
     <div class="form-pleft">
       <mt-cell title="材质" to="/material" :value="material" is-link></mt-cell>
-      <mt-field label="高度H(mm)" placeholder="请输入高度" v-model="height"></mt-field>
-      <mt-field label="腰厚D(mm)" placeholder="请输入腰厚" v-model="thickness"></mt-field>
-      <mt-field label="腿宽B(mm)" placeholder="请输入腿宽" v-model="width"></mt-field>
+      <mt-field label="厚度D(mm)" placeholder="请输入厚度" v-model="thickness"></mt-field>
+      <mt-field label="槽底(mm)" placeholder="请输入槽底" v-model="caodi"></mt-field>
+      <mt-field label="槽高(mm)" placeholder="请输入槽高" v-model="height"></mt-field>
       <mt-field label="长度L(mm)" placeholder="请输入长度" v-model="length"></mt-field>
     </div>
     <mt-cell title="计算结果"></mt-cell>
@@ -23,7 +23,7 @@
     data(){
       return {
         height:'',
-        width:'',
+        caodi:'',
         thickness: '',
         length: ''
       }
@@ -33,11 +33,11 @@
         return this.$store.state.material
       },
       result(){
-        if (!this.width || !this.length|| !this.thickness|| !this.height||!this.material) {
+        if (!this.caodi || !this.length|| !this.thickness|| !this.height||!this.material) {
           return ''
         }
         try {
-          return this.height*this.width*this.thickness * (this.length/1000)*material[this.material]
+          return (this.thickness*((this.caodi+this.height*2-this.thickness*2)/1000) * (this.length/1000)*material[this.material]).toFixed(6)
         } catch (e) {
           return ''
         }

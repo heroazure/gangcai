@@ -37,7 +37,7 @@
           return ''
         }
         try {
-          return this.thickness*((this.sideLength1+this.sideLength2)*2-this.thickness*4) * (this.length/1000)*material[this.material]
+          return (this.thickness*((this.sideLength1+this.sideLength2)*2-this.thickness*4) * (this.length/1000)*material[this.material]).toFixed(6)
         } catch (e) {
           return ''
         }

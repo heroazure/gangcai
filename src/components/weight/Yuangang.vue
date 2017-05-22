@@ -33,7 +33,7 @@
           return ''
         }
         try {
-          return 0.00078535031*this.diameter*this.diameter * (this.length/1000)*material[this.material]
+          return (0.00078535031*this.diameter*this.diameter * (this.length/1000)*material[this.material]).toFixed(6)
         } catch (e) {
           return ''
         }

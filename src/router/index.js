@@ -34,7 +34,7 @@ let Fangguan=(resolve) => require(['@/components/weight/Fangguan'], resolve)
 
 //查询详情
 let Detail=(resolve) => require(['@/components/detail/Index'], resolve)
-let Chicun=(resolve) => require(['@/components/detail/List'], resolve)
+// let Chicun=(resolve) => require(['@/components/detail/List'], resolve)
 
 //冷热轧钢
 let Cold=(resolve) => require(['@/components/zhagang/Cold'], resolve)
@@ -195,14 +195,14 @@ let routes=[
     },
     component: Detail
   },
-  {
+  /*{
     path: '/detail/list/:chicun',
     name: 'chicun',
     meta:{
       title:'冷热轧钢'
     },
     component: Chicun
-  },
+  },*/
   {
     path: '/material',
     name: 'material',

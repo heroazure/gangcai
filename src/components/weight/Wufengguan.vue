@@ -37,7 +37,7 @@
           return ''
         }
         try {
-          return 0.00314140127*this.thickness*(this.externalDiameter-this.houdu) * (this.length/1000)*material[this.material]
+          return (0.00314140127*this.thickness*(this.externalDiameter-this.houdu) * (this.length/1000)*material[this.material]).toFixed(6)
         } catch (e) {
           return ''
         }
