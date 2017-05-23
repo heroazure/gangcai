@@ -43,11 +43,40 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
-        }
+        loaders:[
+          {
+            loader: 'url-loader',
+            query: {
+              limit: 10000,
+              name: 'img/[name].[hash:7].[ext]'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              gifsicle:{
+                interlaced: false
+              },
+              mozjpeg: {
+                quality: 65,
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4,
+              },
+              svgo: {
+                plugins: [
+                  {
+                    removeViewBox: false,
+                  },
+                  {
+                    removeEmptyAttrs: false,
+                  }
+                ]
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
