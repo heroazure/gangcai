@@ -26,15 +26,6 @@
       <icon-text text="平板过磅计价" :iconUrl="price3" path="/price/weigh" @click.native="onWeightTap"></icon-text>
       <icon-text text="卷板计价" :iconUrl="price4" path="/price/juanban" @click.native="onWeightTap"></icon-text>
     </div>
-    <mt-cell title="相关查询"></mt-cell>
-    <div class="search-result clearfix" v-if="searchVals.length">
-      <div class="search-item" v-for="item in searchVals" :key="item.id">
-        <router-link class="origin-a" :to="{path:`/detail/index/${item.id}/${categoryId}`}">{{item.id}}</router-link>
-      </div>
-    </div>
-    <div class="search-result" v-else>
-      没有查询结果
-    </div>
     <div class="search-bottom">
       <div class="form-pleft">
         <mt-cell title="查询类别" to="/category" :value="category" is-link></mt-cell>
@@ -44,6 +35,15 @@
       <div class="search-btn-div">
         <mt-button type="primary" size="large" @click="onSearch">查询</mt-button>
       </div>
+    </div>
+    <mt-cell title="相关查询"></mt-cell>
+    <div class="search-result clearfix" v-if="searchVals.length">
+      <div class="search-item" v-for="item in searchVals" :key="item.id">
+        <router-link class="origin-a" :to="{path:`/detail/index/${item.id}/${categoryId}`}">{{item.name}}</router-link>
+      </div>
+    </div>
+    <div class="search-result" v-else>
+      没有查询结果
     </div>
   </div>
 </template>
@@ -59,7 +59,7 @@
   }
 
   .search-btn-div {
-    padding: 20px 10px;
+    padding: 20px 10px 0;
   }
 
   .search-result {
@@ -77,28 +77,26 @@
   }
 
   .hlj-container-wrap {
-    padding-bottom: @bottom-padding; /*no*/
+    padding-bottom: 10px; /*no*/
   }
 
   .search-bottom {
-    position: fixed;
+    /*position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
     margin: 0 auto;
-    height: @bottom-padding; /*no*/
+    height: @bottom-padding; !*no*!
     z-index: 100;
     background-color: #fff;
     @media (min-width: @hlj-page-max-width) {
-      width: @hlj-page-max-width; /*no*/
-    }
+      width: @hlj-page-max-width; !*no*!
+    }*/
   }
 </style>
 <script>
   import IconText from 'widget/IconText.vue'
   import category from 'enum/category'
-  import constituent from 'ajax/constituent'
-  import capability from 'ajax/capability'
   import compare from 'ajax/compare'
   import {Toast} from 'mint-ui'
   export default{
@@ -148,45 +146,26 @@
     },
     methods: {
       onWeightTap(){
-        this.$store.commit('changeMaterial','')
+        this.$store.commit('changeMaterial', '')
       },
       onSearch(){
-        /*if(this.categoryId===3){
-            if(!this.chicun.trim()){
-              Toast({message:'请输入公称尺寸'})
-              return
-            }
-            this.$router.push(`/detail/list/${this.chicun.trim()}`)
-        }else {*/
-          let paihao = this.paihao.trim()
-          if (!paihao) {
-            Toast({message: '请输入牌号'})
-            return
-          }
-          let ary = []
-          switch (this.categoryId + '') {
-            case '0':
-              ary = compare
-              break
-            case '1':
-              ary = constituent
-              break
-            case '2':
-              ary = capability
-              break
-            default:
-              break
-          }
-          let arry = []
-          ary.forEach(item => {
-            if (item.paihao.toLowerCase().indexOf(paihao.toLowerCase()) !== -1) {
-              arry.push({id: item.paihao})
+        let paihao = this.paihao.trim()
+        if (!paihao) {
+          Toast({message: '请输入牌号'})
+          return
+        }
+        let arry = []
+        compare.forEach(item => {
+          Object.keys(item).forEach(key => {
+            if (key !== 'id' && key !== '密度') {
+              if (item[key].toLowerCase().indexOf(paihao.toLowerCase()) !== -1) {
+                arry.push({id: item.paihao, name: item[key]})
+              }
             }
           })
-          this.searchVals = arry
-          window.scrollTo(0, document.body.scrollHeight)
-        }
-//      }
+        })
+        this.searchVals = arry
+      }
     }
   }
 </script>
