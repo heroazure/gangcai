@@ -38,7 +38,7 @@
     </div>
     <mt-cell title="相关查询"></mt-cell>
     <div class="search-result clearfix" v-if="searchVals.length">
-      <div class="search-item" v-for="item in searchVals" :key="item.id">
+      <div class="search-item" v-for="(item,index) in searchVals" :key="index">
         <router-link class="origin-a" :to="{path:`/detail/index/${item.id}/${categoryId}`}">{{item.name}}</router-link>
       </div>
     </div>
