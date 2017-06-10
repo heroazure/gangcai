@@ -3,10 +3,9 @@
     <mt-cell title="无缝管/焊管"></mt-cell>
     <div class="form-pleft">
       <mt-cell title="材质" to="/material" :value="material" is-link></mt-cell>
-      <mt-field label="壁厚D(mm)" placeholder="请输入壁厚" v-model="thickness"></mt-field>
-      <mt-field label="外径(mm)" placeholder="请输入外径" v-model="externalDiameter "></mt-field>
-      <mt-field label="厚度H(mm)" placeholder="请输入厚度" v-model="houdu"></mt-field>
-      <mt-field label="长度L(mm)" placeholder="请输入长度" v-model="length"></mt-field>
+      <mt-field label="壁厚D(mm)" placeholder="请输入壁厚" type="number" v-model="thickness"></mt-field>
+      <mt-field label="外径(mm)" placeholder="请输入外径" type="number" v-model="externalDiameter "></mt-field>
+      <mt-field label="长度L(mm)" placeholder="请输入长度" type="number" v-model="length"></mt-field>
     </div>
     <mt-cell title="计算结果"></mt-cell>
     <div class="form-pleft">
@@ -24,20 +23,31 @@
       return {
         externalDiameter:'',
         thickness: '',
-        length: '',
-        houdu:''
+        length: ''
       }
     },
     computed: {
       material(){
         return this.$store.state.material
       },
+      materialValue(){
+        let result = 0
+        material.forEach(item => {
+          if (item.id === this.material) {
+            result = item.name
+          }
+        })
+        return result
+      },
       result(){
-        if (!this.externalDiameter || !this.length|| !this.thickness|| !this.houdu||!this.material) {
+        if (!this.externalDiameter || !this.length|| !this.thickness||!this.material) {
           return ''
         }
         try {
-          return (0.00314140127*this.thickness*(this.externalDiameter-this.houdu) * (this.length/1000)*material[this.material]).toFixed(6)
+            let thickness=Number(this.thickness)
+            let externalDiameter=Number(this.externalDiameter)
+            let length=Number(this.length)
+          return (0.00314140127*thickness*(externalDiameter-thickness) * (length/1000)* this.materialValue).toFixed(6)
         } catch (e) {
           return ''
         }
