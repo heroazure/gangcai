@@ -1,6 +1,6 @@
 <template>
   <div class="hlj-container-wrap">
-    <mt-cell title="六角钢"></mt-cell>
+    <mt-cell title="六角棒"></mt-cell>
     <div class="form-pleft">
       <mt-cell title="材质" to="/material" :value="material" is-link></mt-cell>
       <mt-field label="对边距离A(mm)" placeholder="请输入对边距离" type="number" v-model="betweenLength"></mt-field>

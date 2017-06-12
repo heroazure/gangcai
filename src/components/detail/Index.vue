@@ -1,7 +1,7 @@
 <template>
   <div class="hlj-container-wrap">
     <mt-cell :title="`${detail.paihao}的${categoryName}`"></mt-cell>
-    <mt-cell v-for="key in Object.keys(detail)" :title="key==='id'?'国标编号':key==='paihao'?'牌号':key" :value="detail[key]" :key="key"></mt-cell>
+    <mt-cell v-for="key in Object.keys(detail)" :title="key==='id'?'国标序号':key==='paihao'?'牌号':key" :value="detail[key]" :key="key"></mt-cell>
   </div>
 </template>
 <style lang="less">

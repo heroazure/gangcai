@@ -4,7 +4,7 @@
     <div class="form-pleft">
       <mt-cell title="材质" to="/material" :value="material" is-link></mt-cell>
       <mt-field label="厚度D(mm)" placeholder="请输入厚度" type="number" v-model="thickness"></mt-field>
-      <mt-field label="宽度W(mm)" placeholder="请输入宽度" type="number" v-model="sideLength"></mt-field>
+      <mt-field label="边宽W(mm)" placeholder="请输入宽度" type="number" v-model="sideLength"></mt-field>
       <mt-field label="长度L(mm)" placeholder="请输入长度" type="number" v-model="length"></mt-field>
     </div>
     <mt-cell title="计算结果"></mt-cell>

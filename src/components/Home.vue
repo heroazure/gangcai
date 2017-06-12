@@ -2,13 +2,13 @@
   <div class="hlj-container-wrap">
     <mt-cell title="重量计算"></mt-cell>
     <div class="items">
-      <icon-text text="钢板" :iconUrl="icon1" path="/weight/1" @click.native="onWeightTap"></icon-text>
+      <icon-text text="平板" :iconUrl="icon1" path="/weight/1" @click.native="onWeightTap"></icon-text>
       <icon-text text="圆钢" :iconUrl="icon2" path="/weight/2" @click.native="onWeightTap"></icon-text>
       <icon-text text="方钢" :iconUrl="icon3" path="/weight/3" @click.native="onWeightTap"></icon-text>
-      <icon-text text="六角钢" :iconUrl="icon4" path="/weight/4" @click.native="onWeightTap"></icon-text>
+      <icon-text text="六角棒" :iconUrl="icon4" path="/weight/4" @click.native="onWeightTap"></icon-text>
     </div>
     <div class="items">
-      <icon-text text="八角钢" :iconUrl="icon5" path="/weight/5" @click.native="onWeightTap"></icon-text>
+      <icon-text text="八角棒" :iconUrl="icon5" path="/weight/5" @click.native="onWeightTap"></icon-text>
       <icon-text text="扁钢" :iconUrl="icon6" path="/weight/6" @click.native="onWeightTap"></icon-text>
       <icon-text text="等边角钢" :iconUrl="icon7" path="/weight/7" @click.native="onWeightTap"></icon-text>
       <icon-text text="不等边角钢" :iconUrl="icon8" path="/weight/8" @click.native="onWeightTap"></icon-text>
@@ -33,10 +33,10 @@
         <!--<mt-field label="公称尺寸" placeholder="请输入公称尺寸" v-model="chicun" v-else></mt-field>-->
       </div>
       <div class="search-btn-div">
-        <mt-button type="primary" size="large" @click="onSearch">查询</mt-button>
+        <mt-button type="primary" size="large" @click="onSearch">搜索</mt-button>
       </div>
     </div>
-    <mt-cell title="相关查询"></mt-cell>
+    <mt-cell title="相关查询，点击结果进入"></mt-cell>
     <div class="search-result clearfix" v-if="searchVals.length">
       <div class="search-item" v-for="(item,index) in searchVals" :key="index">
         <router-link class="origin-a" :to="{path:`/detail/index/${item.id}/${categoryId}`}">{{item.name}}</router-link>

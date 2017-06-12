@@ -47,7 +47,7 @@ let routes=[
     path: '/',
     name: 'Home',
     meta:{
-      title:'钢材查询计算'
+      title:'不锈钢计算器'
     },
     component: Home
   },
@@ -95,7 +95,7 @@ let routes=[
     path: '/weight/1',
     name: 'Gangban',
     meta:{
-      title:'钢板重量计算'
+      title:'平板重量计算'
     },
     component: Gangban
   },
@@ -119,7 +119,7 @@ let routes=[
     path: '/weight/4',
     name: 'Liujiaogang',
     meta:{
-      title:'六角钢重量计算'
+      title:'六角棒重量计算'
     },
     component: Liujiaogang
   },
@@ -127,7 +127,7 @@ let routes=[
     path: '/weight/5',
     name: 'Bajiaogang',
     meta:{
-      title:'八角钢重量计算'
+      title:'八角棒重量计算'
     },
     component: Bajiaogang
   },

@@ -50,10 +50,10 @@
             let sideLength1=Number(this.sideLength1)
             let sideLength2=Number(this.sideLength2)
             let length=Number(this.length)
-          return (thickness*
+          return ((thickness*
           ((sideLength1+sideLength2)*2-thickness*4)
           * (length/1000)*
-          this.materialValue).toFixed(6)
+          this.materialValue)/1000).toFixed(6)
         } catch (e) {
           return ''
         }
