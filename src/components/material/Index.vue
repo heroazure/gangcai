@@ -1,6 +1,6 @@
 <template>
   <div class="hlj-container-wrap">
-    <mt-cell v-for="item in material" :key="item" :title="item" @click.native="onTap(item)"></mt-cell>
+    <mt-cell v-for="item in material" :key="item.id" :title="item.id" @click.native="onTap(item.id)"></mt-cell>
   </div>
 </template>
 <style lang="less">
@@ -11,7 +11,7 @@
   export default{
     data(){
       return {
-        material:Object.keys(material)
+        material:material
       }
     },
     methods: {

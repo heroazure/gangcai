@@ -3,8 +3,8 @@
     <mt-cell title="圆钢"></mt-cell>
     <div class="form-pleft">
       <mt-cell title="材质" to="/material" :value="material" is-link></mt-cell>
-      <mt-field label="直径A(mm)" placeholder="请输入直径" v-model="diameter"></mt-field>
-      <mt-field label="长度L(mm)" placeholder="请输入长度" v-model="length"></mt-field>
+      <mt-field label="直径A(mm)" placeholder="请输入直径" type="number" v-model="diameter"></mt-field>
+      <mt-field label="长度L(mm)" placeholder="请输入长度" type="number" v-model="length"></mt-field>
     </div>
     <mt-cell title="计算结果"></mt-cell>
     <div class="form-pleft">
@@ -28,12 +28,23 @@
       material(){
         return this.$store.state.material
       },
+      materialValue(){
+        let result = 0
+        material.forEach(item => {
+          if (item.id === this.material) {
+            result = item.name
+          }
+        })
+        return result
+      },
       result(){
         if (!this.diameter || !this.length||!this.material) {
           return ''
         }
         try {
-          return (0.00078535031*this.diameter*this.diameter * (this.length/1000)*material[this.material]).toFixed(6)
+          let diameter=Number(this.diameter)
+          let length=Number(this.length)
+          return (0.00078535031*diameter*diameter * (length/1000)* this.materialValue).toFixed(6)
         } catch (e) {
           return ''
         }
