@@ -1,6 +1,6 @@
 <template>
   <div class="hlj-container-wrap">
-    <mt-cell title="钢板"></mt-cell>
+    <mt-cell title="平板"></mt-cell>
     <div class="form-pleft">
       <mt-cell title="材质" to="/material" :value="material" is-link></mt-cell>
       <mt-field label="厚度H(mm)" placeholder="请输入厚度" type="number" v-model="thickness"></mt-field>

@@ -2,13 +2,13 @@
   <div class="hlj-container-wrap">
     <mt-cell title="重量计算"></mt-cell>
     <div class="items">
-      <icon-text text="钢板" :iconUrl="icon1" path="/weight/1" @click.native="onWeightTap"></icon-text>
+      <icon-text text="平板" :iconUrl="icon1" path="/weight/1" @click.native="onWeightTap"></icon-text>
       <icon-text text="圆钢" :iconUrl="icon2" path="/weight/2" @click.native="onWeightTap"></icon-text>
       <icon-text text="方钢" :iconUrl="icon3" path="/weight/3" @click.native="onWeightTap"></icon-text>
-      <icon-text text="六角钢" :iconUrl="icon4" path="/weight/4" @click.native="onWeightTap"></icon-text>
+      <icon-text text="六角棒" :iconUrl="icon4" path="/weight/4" @click.native="onWeightTap"></icon-text>
     </div>
     <div class="items">
-      <icon-text text="八角钢" :iconUrl="icon5" path="/weight/5" @click.native="onWeightTap"></icon-text>
+      <icon-text text="八角棒" :iconUrl="icon5" path="/weight/5" @click.native="onWeightTap"></icon-text>
       <icon-text text="扁钢" :iconUrl="icon6" path="/weight/6" @click.native="onWeightTap"></icon-text>
       <icon-text text="等边角钢" :iconUrl="icon7" path="/weight/7" @click.native="onWeightTap"></icon-text>
       <icon-text text="不等边角钢" :iconUrl="icon8" path="/weight/8" @click.native="onWeightTap"></icon-text>
