@@ -21,10 +21,10 @@
     </div>
     <mt-cell title="价格计算"></mt-cell>
     <div class="items">
-      <icon-text text="平板单价" :iconUrl="price1" path="/price/unit" @click.native="onWeightTap"></icon-text>
-      <icon-text text="平板理算计价" :iconUrl="price2" path="/price/lisuan" @click.native="onWeightTap"></icon-text>
-      <icon-text text="平板过磅计价" :iconUrl="price3" path="/price/weigh" @click.native="onWeightTap"></icon-text>
-      <icon-text text="卷板计价" :iconUrl="price4" path="/price/juanban" @click.native="onWeightTap"></icon-text>
+      <icon-text text="平板单价" :iconUrl="price1" path="/price/unit" type="auto" @click.native="onWeightTap"></icon-text>
+      <icon-text text="平板理算计价" :iconUrl="price2" path="/price/lisuan" type="auto" @click.native="onWeightTap"></icon-text>
+      <icon-text text="平板过磅计价" :iconUrl="price3" path="/price/weigh" type="auto" @click.native="onWeightTap"></icon-text>
+      <icon-text text="卷板计价" :iconUrl="price4" path="/price/juanban" type="auto" @click.native="onWeightTap"></icon-text>
     </div>
     <div class="search-bottom">
       <div class="form-pleft">

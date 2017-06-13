@@ -44,7 +44,7 @@
         try {
           let sideLength=Number(this.sideLength)
           let length=Number(this.length)
-          return (sideLength*sideLength * (length/1000)* this.materialValue).toFixed(6)
+          return ((sideLength*sideLength * (length/1000)* this.materialValue)/1000).toFixed(6)
         } catch (e) {
           return ''
         }

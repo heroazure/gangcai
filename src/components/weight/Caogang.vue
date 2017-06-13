@@ -12,6 +12,9 @@
     <div class="form-pleft">
       <mt-field label="理论重量(kg)" v-model="result"></mt-field>
     </div>
+    <div class="text-center">
+      <img style="width: 50%;height: auto;margin-top: 20px;" src="../../assets/img/caogang.png" alt="槽钢">
+    </div>
   </div>
 </template>
 <style lang="less">

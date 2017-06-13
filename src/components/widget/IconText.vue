@@ -1,6 +1,6 @@
 <template>
   <router-link :to="{path:path}" tag="div" class="icon-text">
-    <img :src="iconUrl" :alt="text">
+    <img :src="iconUrl" :class="type" :alt="text">
     <br>
     {{text}}
   </router-link>
@@ -11,9 +11,11 @@
     font-size: 12px;
     text-align: center;
     img {
-      width: 34px;
-      height: auto;
-      min-height: 34px;
+      width: 25px;
+      height: 25px;
+      &.auto{
+        height:auto;
+      }
     }
   }
 </style>
@@ -31,6 +33,10 @@
       path:{
         type: String,
         default: '/'
+      },
+      type:{
+        type: String,
+        default: ''
       }
     },
     data(){

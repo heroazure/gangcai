@@ -44,7 +44,7 @@
         try {
           let betweenLength = Number(this.betweenLength)
           let length = Number(this.length)
-          return (0.00828025477 * betweenLength * betweenLength * (length / 1000) * this.materialValue).toFixed(6)
+          return ((0.00828025477 * betweenLength * betweenLength * (length / 1000) * this.materialValue)/10).toFixed(6)
         } catch (e) {
           return ''
         }
